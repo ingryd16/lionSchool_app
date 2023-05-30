@@ -3,19 +3,21 @@ package br.senai.sp.jandira.lionschoolapplication.gui
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -41,85 +43,149 @@ fun CoursesPreview() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(51, 71, 176)),
     )
     {
-        // ROW 1: INFO ICON //
-        Row(
+        // IMAGE AREA //
+        Card(
             modifier = Modifier
+                .height(height = 250.dp)
                 .fillMaxWidth()
-                .height(50.dp)
-                .padding(10.dp),
-            horizontalArrangement = Arrangement.Start, verticalAlignment = Alignment.CenterVertically
+                .background(Color(51, 71, 176)),
         ) {
+
             Image(
-                painter = painterResource(id = R.drawable.info_24),
-                contentDescription = null,
+                painter = painterResource(id = R.drawable.quadruplo),
+                contentDescription = "",
+                contentScale = ContentScale.Crop
             )
         }
 
 
-        //ROW 2: LOGO IMAGE//
-        Row(
+        //CARD COM TEXTS
+        Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(320.dp),
-            horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.Bottom
+                .height(120.dp),
+            shape = RoundedCornerShape(bottomStart = 20.dp, bottomEnd = 20.dp),
         ) {
-            Image(painter = painterResource(id = R.drawable.logo2), contentDescription = "")
-        }
 
-
-        //COLUMN 3: TEXTS//
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .fillMaxWidth()
-        ) {
-            Text(
-                text = stringResource(id = R.string.name),
-                fontSize = 60.sp,
-                fontWeight = FontWeight(800),
-                color = Color.White,
-                modifier = Modifier.height(80.dp)
-            )
-            Text(
-                text = stringResource(id = R.string.since),
-                fontSize = 16.sp,
-                fontWeight = FontWeight(800),
-                color = Color.White,
-            )
-            Text(
-                text = stringResource(id = R.string.transforming),
-                fontSize = 16.sp,
-                fontWeight = FontWeight(800),
-                color = Color.White
-            )
-        }
-
-
-        //ROW 4: BUTTON//
-        Row(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(30.dp),
-            horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.Bottom
-        ) {
-            Button(
-                onClick = { /*TODO*/ },
+            Column(
                 modifier = Modifier
-                    .width(120.dp)
-                    .height(30.dp),
-                colors = ButtonDefaults.buttonColors(Color.White),
-                shape = RoundedCornerShape(16.dp)
+                    .background(Color(51, 71, 176))
+                    .fillMaxWidth(),
+                Arrangement.Center, Alignment.CenterHorizontally
             ) {
-                Text(
-                    text = stringResource(id = R.string.started),
-                    fontWeight = FontWeight(800),
-                    fontSize = 12.sp,
-                    color = Color(51,71,176)
-                )
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    Arrangement.Center
+                ) {
+                    Text(
+                        text = "Lion School is",
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp
+                    )
+                    Spacer(modifier = Modifier.width(5.dp))
+                    Text(
+                        text = "practice.",
+                        color = Color(229, 182, 87),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp
+                    )
+                }
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    Arrangement.Center
+                ) {
+                    Text(
+                        text = "Choose one course to",
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp
+                    )
+                    Spacer(modifier = Modifier.width(5.dp))
+                    Text(
+                        text = "start.",
+                        color = Color(229, 182, 87),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp
+                    )
+                }
             }
+
+        }
+
+        Spacer(modifier = Modifier.height(30.dp))
+
+        //RESTO
+        Row(
+            modifier = Modifier
+                .fillMaxWidth(),
+            Arrangement.Center
+        ) {
+            Text(
+                text = "Courses",
+                color = Color(51, 71, 176),
+                fontWeight = FontWeight.Bold,
+                fontSize = 35.sp
+            )
+        }
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize(),
+            Arrangement.Top,Alignment.CenterHorizontally
+        ) {
+            Row(
+                modifier = Modifier
+            ) {
+                Button(
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier
+                        .width(350.dp)
+                        .height(130.dp),
+                    colors = ButtonDefaults.buttonColors(Color.White),
+                    border= BorderStroke(2.dp,Color(51, 71, 176)),
+                    shape = RoundedCornerShape(20.dp)
+                ) {
+                    Text(
+                        text = "RDS",
+                        fontWeight = FontWeight(800),
+                        fontSize = 25.sp,
+                        color = Color(51, 71, 176)
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Row(
+                modifier = Modifier
+            ) {
+                Button(
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier
+                        .width(350.dp)
+                        .height(130.dp),
+                    colors = ButtonDefaults.buttonColors(Color.White),
+                    border= BorderStroke(2.dp,Color(51, 71, 176)),
+                    shape = RoundedCornerShape(20.dp)
+                ) {
+                    Text(
+                        text = "DS",
+                        fontWeight = FontWeight.ExtraBold,
+                        fontSize = 25.sp,
+                        color = Color(51, 71, 176)
+                    )
+                }
+            }
+
         }
     }
 }
