@@ -48,21 +48,20 @@ fun CourseSelectedPreview() {
                     .fillMaxWidth()
                     .height(200.dp),
                 backgroundColor = Color.Red,
-                shape = RoundedCornerShape(bottomEnd = 20.dp, bottomStart = 20.dp)
+                shape = RoundedCornerShape(bottomEnd = 20.dp, bottomStart = 20.dp),
+
             ) {
-                Text(
-                    text = "DS",
-                    fontWeight = FontWeight.ExtraBold,
-                    fontSize = 25.sp,
-                    color = Color(51, 71, 176)
-                )
+                Row(Modifier.background(Color.Blue).height(10.dp)) {
+                    Text(
+                        text = "DS",
+                        fontWeight = FontWeight.ExtraBold,
+                        fontSize = 25.sp,
+                    )
+                }
+
             }
         }
 
-        Row(Modifier.background(Color.Magenta).height(300.dp).fillMaxWidth()) {
-
-
-        }
     }
 }
 
