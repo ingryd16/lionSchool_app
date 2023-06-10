@@ -1,5 +1,6 @@
 package br.senai.sp.jandira.lionschoolapplication
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -14,12 +15,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.senai.sp.jandira.lionschoolapplication.gui.CoursesActivity
 import br.senai.sp.jandira.lionschoolapplication.ui.theme.LionSchoolApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -36,6 +39,9 @@ class MainActivity : ComponentActivity() {
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
 fun DefaultPreview() {
+    val context = LocalContext.current
+
+
     //COLUNA PRINCIPAL
     Column(
         modifier = Modifier
@@ -105,7 +111,10 @@ fun DefaultPreview() {
             horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.Bottom
         ) {
             Button(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    val intent = Intent(context, CoursesActivity::class.java)
+                    context.startActivity(intent)
+                },
                 modifier = Modifier
                     .width(120.dp)
                     .height(30.dp),
