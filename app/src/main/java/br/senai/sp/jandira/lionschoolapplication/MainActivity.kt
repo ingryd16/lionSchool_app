@@ -1,4 +1,4 @@
-package br.senai.sp.jandira.lionschoolapplication.gui
+package br.senai.sp.jandira.lionschoolapplication
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -52,7 +52,7 @@ fun DefaultPreview() {
             horizontalArrangement = Arrangement.Start, verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                painter = painterResource(id = br.senai.sp.jandira.lionschoolapplication.R.drawable.info_24),
+                painter = painterResource(id = R.drawable.info_24),
                 contentDescription = null,
             )
         }
@@ -65,7 +65,7 @@ fun DefaultPreview() {
                 .height(320.dp),
             horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.Bottom
         ) {
-            Image(painter = painterResource(id = br.senai.sp.jandira.lionschoolapplication.R.drawable.logo2), contentDescription = "")
+            Image(painter = painterResource(id = R.drawable.logo2), contentDescription = "")
         }
 
 
@@ -76,20 +76,20 @@ fun DefaultPreview() {
                 .fillMaxWidth()
         ) {
             Text(
-                text = stringResource(id = br.senai.sp.jandira.lionschoolapplication.R.string.name),
+                text = stringResource(id = R.string.name),
                 fontSize = 60.sp,
                 fontWeight = FontWeight(800),
                 color = Color.White,
                 modifier = Modifier.height(80.dp)
             )
             Text(
-                text = stringResource(id = br.senai.sp.jandira.lionschoolapplication.R.string.since),
+                text = stringResource(id = R.string.since),
                 fontSize = 16.sp,
                 fontWeight = FontWeight(800),
                 color = Color.White,
             )
             Text(
-                text = stringResource(id = br.senai.sp.jandira.lionschoolapplication.R.string.transforming),
+                text = stringResource(id = R.string.transforming),
                 fontSize = 16.sp,
                 fontWeight = FontWeight(800),
                 color = Color.White
@@ -113,7 +113,7 @@ fun DefaultPreview() {
                 shape = RoundedCornerShape(16.dp)
             ) {
                 Text(
-                    text = stringResource(id = br.senai.sp.jandira.lionschoolapplication.R.string.started),
+                    text = stringResource(id = R.string.started),
                     fontWeight = FontWeight(800),
                     fontSize = 12.sp,
                     color = Color(51,71,176)
