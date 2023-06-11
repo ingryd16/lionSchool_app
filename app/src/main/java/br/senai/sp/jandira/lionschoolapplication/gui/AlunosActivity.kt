@@ -63,6 +63,7 @@ class AlunosActivity : ComponentActivity() {
 }
 
 @OptIn(ExperimentalMaterialApi::class)
+@Preview(showSystemUi = true, showBackground = true)
 
 @Composable
 fun AlunosScreen(curso : String?,titulo : String?) {

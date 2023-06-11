@@ -56,6 +56,8 @@ class AlunoActivity : ComponentActivity() {
     }
 }
 
+@Preview(showSystemUi = true, showBackground = true)
+
 @Composable
 fun AlunoScreen(nome :String?,foto :String?,matricula : String?) {
     val context = LocalContext.current
