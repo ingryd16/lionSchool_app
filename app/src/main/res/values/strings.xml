@@ -4,4 +4,8 @@
     <string name="since">Since 2023</string>
     <string name="transforming">Transforming learning.</string>
     <string name="started">Get Started</string>
+        <string name="Logo">Lion School</string>
+        <string name="cursos">Gerencie seus cursos</string>
+        <string name="title_activity_alunos">AlunosActivity</string>
+        <string name="title_activity_aluno">AlunoActivity</string>
 </resources>
