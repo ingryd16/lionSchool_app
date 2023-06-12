@@ -1,6 +1,7 @@
 package br.senai.sp.jandira.lionschoolapplication.gui
 
 import android.content.Intent
+import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -8,6 +9,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -34,12 +36,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.senai.sp.jandira.lionschoolapplication.R
@@ -63,7 +72,7 @@ class AlunosActivity : ComponentActivity() {
 }
 
 @OptIn(ExperimentalMaterialApi::class)
-@Preview(showSystemUi = true, showBackground = true)
+@Preview
 
 @Composable
 fun AlunosScreen(curso : String?,titulo : String?) {
@@ -90,45 +99,61 @@ fun AlunosScreen(curso : String?,titulo : String?) {
 
     })
     Log.i("ds2m", "$alunos")
-    Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = Color(51, 71, 176)
-    ) {
-        Column(modifier = Modifier.fillMaxSize()) {
-            Row(
+        Column(modifier = Modifier.fillMaxSize()
+            .background(Color.White))
+        {
+            Card(
                 modifier = Modifier
+                    .height(height = 250.dp)
                     .fillMaxWidth()
-                    .padding(30.dp),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(
-                    text = titulo.toString(),
-                    textAlign = TextAlign.Center,
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White,
-                )
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(Color.White)
+                        .height(120.dp),
+                    shape = RoundedCornerShape(bottomStart = 20.dp, bottomEnd = 20.dp),
+                ) {
 
+                    Column(
+                        modifier = Modifier
+                            .background(Color(51, 71, 176))
+                            .fillMaxWidth(),
+                        Arrangement.Center, Alignment.CenterHorizontally
+                    ) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(30.dp),
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = titulo.toString(),
+                                textAlign = TextAlign.Center,
+                                fontSize = 30.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = Color.White,
+                                textDecoration = TextDecoration.Underline
+                            )
+                        }
+                    }
+                }
             }
+
+
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(Color.White, shape = RoundedCornerShape(30.dp, 30.dp, 0.dp, 0.dp)),
+                    .background(Color.White),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Row(
                     modifier = Modifier.padding(27.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Image(
-                        modifier = Modifier.size(24.dp),
-                        painter = painterResource(id = R.drawable.filter),
-                        contentDescription = ""
-                    )
-                    Spacer(modifier = Modifier.width(9.dp))
                     var color by remember { mutableStateOf(Color.White) }
-                    var colorText by remember { mutableStateOf(Color(51, 71, 176)) }
+                    var colorText by remember { mutableStateOf(Color(229, 182, 87)) }
                     var isEnable by remember { mutableStateOf(false) }
                     Card(
                         onClick = {
@@ -160,20 +185,20 @@ fun AlunosScreen(curso : String?,titulo : String?) {
 
                             })
                         },
-                        border = BorderStroke(2.dp, Color(51, 71, 176)),
+                        border = BorderStroke(2.dp, Color(229, 182, 87)),
                         backgroundColor = color,
                         shape = RoundedCornerShape(20.dp)
                     ) {
                         Text(
                             modifier = Modifier.padding(7.dp),
                             color = colorText,
-                            text = "cursando",
+                            text = "Cursando",
                             fontWeight = FontWeight.Black
                         )
                     }
                     Spacer(modifier = Modifier.width(9.dp))
                     var colorFinalizado by remember { mutableStateOf(Color.White) }
-                    var colorTextFinalizado by remember { mutableStateOf(Color(51, 71, 176)) }
+                    var colorTextFinalizado by remember { mutableStateOf(Color(229, 182, 87)) }
                     var isEnableFinalizado by remember { mutableStateOf(false) }
                     Card(
                         onClick = {
@@ -205,22 +230,16 @@ fun AlunosScreen(curso : String?,titulo : String?) {
 
                         },
                         backgroundColor = colorFinalizado,
-                        border = BorderStroke(2.dp, Color(51, 71, 176)),
+                        border = BorderStroke(2.dp, Color(229, 182, 87)),
                         shape = RoundedCornerShape(20.dp)
                     ) {
                         Text(
                             modifier = Modifier.padding(7.dp),
                             color = colorTextFinalizado,
-                            text = "finalizado",
+                            text = "Finalizado",
                             fontWeight = FontWeight.Black
                         )
                     }
-                    Spacer(modifier = Modifier.width(9.dp))
-                    TextField(
-                        modifier = Modifier.height(30.dp),
-                        value = "2023",
-                        onValueChange = {}
-                    )
                 }
                 LazyColumn(
                     content = {
@@ -272,5 +291,8 @@ fun AlunosScreen(curso : String?,titulo : String?) {
             }
         }
 
-    }
 }
+
+
+
+

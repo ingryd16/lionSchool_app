@@ -88,54 +88,52 @@ fun AlunoScreen(nome :String?,foto :String?,matricula : String?) {
 
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = Color(51,71,176)
     ) {
         Column(modifier = Modifier.fillMaxSize()) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(13.dp),
-                verticalArrangement = Arrangement.Center,
+                    .padding(20.dp),
+                verticalArrangement = Arrangement.SpaceBetween,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
 
+                Text(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = "Informações do aluno:",
+                    textAlign = TextAlign.Center,
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(229, 182, 87),
+                )
+                AsyncImage(
+                    modifier = Modifier.size(200.dp),
+                    model = foto,
+                    contentDescription = "logo"
+                )
                 Text(
                     modifier = Modifier.fillMaxWidth(),
                     text = nome.toString(),
                     textAlign = TextAlign.Center,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color.White,
+                    color = Color(51,71,176),
                 )
-                Spacer(modifier = Modifier.width(4.dp))
-                AsyncImage(
-                    modifier = Modifier.size(200.dp),
-                    model = foto,
-                    contentDescription = "logo"
-                )
-
-
             }
+
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(Color.White, shape = RoundedCornerShape(30.dp, 30.dp, 0.dp, 0.dp)),
+                    .background(Color(243,244,248),
+                        shape = RoundedCornerShape(30.dp, 30.dp, 0.dp, 0.dp)),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(12.dp),
-                    text = "NOTAS",
-                    textAlign = TextAlign.Center,
-                    fontSize = 30.sp,
-                    fontWeight = FontWeight.Black,
-                    color = Color(51,71,176)
-                )
                 LazyColumn(
                     content = {
                         items(materias) {
-                            Column() {
+                            Column(
+                                Modifier.padding(10.dp)
+                            ) {
                                 if (it.media.toInt() >= 70) {
                                     Row(
                                         modifier = Modifier.fillMaxWidth(),
@@ -176,7 +174,6 @@ fun AlunoScreen(nome :String?,foto :String?,matricula : String?) {
                                         }
                                     }
 
-
                                 } else if (it.media.toInt() in 50..69) {
                                     Row(
                                         modifier = Modifier.fillMaxWidth(),
@@ -212,9 +209,7 @@ fun AlunoScreen(nome :String?,foto :String?,matricula : String?) {
                                                 .fillMaxWidth((it.media.toFloat() * 0.01).toFloat())
                                                 .height(25.dp)
                                                 .background(Color(229, 182, 87))
-                                        ) {
-
-                                        }
+                                        )
                                     }
 
                                 } else{
@@ -264,13 +259,9 @@ fun AlunoScreen(nome :String?,foto :String?,matricula : String?) {
 
                         }
                     }
-
                 )
-
-
             }
         }
-
     }
 }
 

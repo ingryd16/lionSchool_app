@@ -32,6 +32,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -162,20 +163,23 @@ fun DefaultPreview() {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(Color.White, shape = RoundedCornerShape(30.dp, 30.dp, 0.dp, 0.dp)),
+                    .background(Color.White),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
                     text = stringResource(id = R.string.cursos),
                     color = Color(51, 71, 176),
                     fontWeight = FontWeight.Black,
-                    fontSize = 30.sp
+                    fontSize = 30.sp,
+                    modifier = Modifier.padding(top=50.dp, bottom = 30.dp),
+                    textDecoration = TextDecoration.Underline
+
                 )
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(20.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                    verticalArrangement = Arrangement.spacedBy(20.dp)
                 ) {
                     items(cursos) { curso ->
                         Card(
