@@ -152,94 +152,9 @@ fun AlunosScreen(curso : String?,titulo : String?) {
                     modifier = Modifier.padding(27.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    var color by remember { mutableStateOf(Color.White) }
-                    var colorText by remember { mutableStateOf(Color(229, 182, 87)) }
-                    var isEnable by remember { mutableStateOf(false) }
-                    Card(
-                        onClick = {
-                            if (!isEnable) {
-                                color = Color(51, 71, 176)
-                                colorText = Color.White
-                                isEnable = true
-                            } else {
-                                color = Color.White
-                                colorText = Color(51, 71, 176)
-                                isEnable = false
-                            }
-                            Log.i("ds2m", "onFailure: ${isEnable}")
 
-                            val call = RetrofitFactory().getCursosService()
-                                .getAlunosByStatus(curso, "Cursando")
-
-                            call.enqueue(object : Callback<ListAlunos> {
-                                override fun onResponse(
-                                    call: Call<ListAlunos>,
-                                    response: Response<ListAlunos>
-                                ) {
-                                    alunos = response.body()!!.alunos
-                                }
-
-                                override fun onFailure(call: Call<ListAlunos>, t: Throwable) {
-                                    Log.i("ds2m", "onFailure: $t")
-                                }
-
-                            })
-                        },
-                        border = BorderStroke(2.dp, Color(229, 182, 87)),
-                        backgroundColor = color,
-                        shape = RoundedCornerShape(20.dp)
-                    ) {
-                        Text(
-                            modifier = Modifier.padding(7.dp),
-                            color = colorText,
-                            text = "Cursando",
-                            fontWeight = FontWeight.Black
-                        )
-                    }
                     Spacer(modifier = Modifier.width(9.dp))
-                    var colorFinalizado by remember { mutableStateOf(Color.White) }
-                    var colorTextFinalizado by remember { mutableStateOf(Color(229, 182, 87)) }
-                    var isEnableFinalizado by remember { mutableStateOf(false) }
-                    Card(
-                        onClick = {
-                            if (!isEnableFinalizado) {
-                                colorFinalizado = Color(51, 71, 176)
-                                colorTextFinalizado = Color.White
-                                isEnableFinalizado = true
-                            } else {
-                                colorFinalizado = Color.White
-                                colorTextFinalizado = Color(51, 71, 176)
-                                isEnableFinalizado = false
-                            }
 
-                            val call = RetrofitFactory().getCursosService()
-                                .getAlunosByStatus(curso, "Finalizado")
-                            call.enqueue(object : Callback<ListAlunos> {
-                                override fun onResponse(
-                                    call: Call<ListAlunos>,
-                                    response: Response<ListAlunos>
-                                ) {
-                                    alunos = response.body()!!.alunos
-                                }
-
-                                override fun onFailure(call: Call<ListAlunos>, t: Throwable) {
-                                    Log.i("ds2m", "onFailure: $t")
-                                }
-
-                            })
-
-                        },
-                        backgroundColor = colorFinalizado,
-                        border = BorderStroke(2.dp, Color(229, 182, 87)),
-                        shape = RoundedCornerShape(20.dp)
-                    ) {
-                        Text(
-                            modifier = Modifier.padding(7.dp),
-                            color = colorTextFinalizado,
-                            text = "Finalizado",
-                            fontWeight = FontWeight.Black
-                        )
-                    }
                 }
                 LazyColumn(
                     content = {
