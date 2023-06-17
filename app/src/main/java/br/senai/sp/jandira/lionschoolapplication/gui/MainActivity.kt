@@ -11,9 +11,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -40,8 +37,6 @@ import br.senai.sp.jandira.lionschoolapplication.R
 import br.senai.sp.jandira.lionschoolapplication.model.ListCursos
 import br.senai.sp.jandira.lionschoolapplication.service.RetrofitFactory
 import br.senai.sp.jandira.lionschoolapplication.ui.theme.LionSchoolApplicationTheme
-import coil.compose.AsyncImage
-import okhttp3.internal.wait
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

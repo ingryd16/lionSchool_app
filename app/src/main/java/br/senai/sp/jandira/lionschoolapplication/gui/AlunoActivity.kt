@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -29,10 +28,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.senai.sp.jandira.lionschoolapplication.model.ListDisciplinas
@@ -56,11 +53,9 @@ class AlunoActivity : ComponentActivity() {
     }
 }
 
-@Preview(showSystemUi = true, showBackground = true)
 
 @Composable
 fun AlunoScreen(nome :String?,foto :String?,matricula : String?) {
-    val context = LocalContext.current
 
     var materias by remember {
         mutableStateOf(listOf<br.senai.sp.jandira.lionschoolapplication.model.Disciplinas>())
@@ -263,24 +258,4 @@ fun AlunoScreen(nome :String?,foto :String?,matricula : String?) {
             }
         }
     }
-}
-
-fun criarSigla(string: String): String {
-    val palavras = string.split(" ")
-    val sigla = StringBuilder()
-
-    if(palavras.size > 1){
-        for (palavra in palavras) {
-            if (palavra.isNotEmpty() && palavra.length > 2) {
-                sigla.append(palavra[0].uppercase())
-            }else if(palavra.isNotEmpty() && palavra.length <= 2 && palavra.startsWith("I")) {
-                sigla.append(palavra.uppercase())
-            }
-        }
-    }else{
-        sigla.append(palavras[0])
-    }
-
-
-    return sigla.toString()
 }
